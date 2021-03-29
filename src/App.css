@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -16,8 +19,8 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -35,4 +38,43 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Menu-Container{
+  background-color: aliceblue;
+  margin-left:2rem;
+  /* display: flex; */
+  flex-direction: column;
+  flex: auto;
+  align-self: flex-start;
+}
+
+div.Menu {
+  margin: 2rem;
+}
+
+.Menu-Items {
+  background-color: lightgray;
+  margin:1rem;
+  padding:0.4rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  
+}
+
+.Menu-Item{
+  border:1px;
+  border-color: black;
+  padding:0.2rem;
+}
+
+.Menu-Item:hover {
+    background-color: lightblue;
+}
+
+.invisible {
+  display:none; /* removes it from render instead of just invisible */
+  /* visibility: hidden; */
 }

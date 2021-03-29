@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import './components/Menu';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Menu from './components/Menu';
 
 function App() {
     return (
@@ -14,6 +16,7 @@ function App() {
             >
                 Learn React
             </a>
+            <Menu className="Menu"></Menu>
             <Tabs>
                 <TabList>
                     <Tab>Title 1</Tab>
