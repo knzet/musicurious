@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  align-content: flex-start;
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
@@ -64,17 +65,36 @@ div.Menu {
   
 }
 
+
+
+.rc-menu-item{
+  list-style:none;
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.rc-menu{
+  height:10%;
+  background-color: blanchedalmond;
+}
+
 .Menu-Item{
   border:1px;
   border-color: black;
-  padding:0.2rem;
+  padding:0.4rem;
+  /* font-size: large; */
 }
 
-.Menu-Item:hover {
+.rc-menu-item:hover {
     background-color: lightblue;
-}
 
+}
+.rc-menu-item#header{
+  background-color: pink;
+}
 .invisible {
   display:none; /* removes it from render instead of just invisible */
   /* visibility: hidden; */
 }
+
+
