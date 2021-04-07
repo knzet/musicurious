@@ -1,35 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
+import ProfileView from "./components/ProfileView";
 
 function App() {
     return (
         <div className="App">
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Learn React
-            </a>
             <div>test test</div>
-            <PageMenu className="Menu"></PageMenu>
-            <Tabs>
-                <TabList>
-                    <Tab>Title 1</Tab>
-                    <Tab>Title 2</Tab>
-                </TabList>
-
-                <TabPanel>
-                    <h2>Any content 1</h2>
-                </TabPanel>
-                <TabPanel>
-                    <h2>Any content 2</h2>
-                </TabPanel>
-            </Tabs>
+            {/*<PageMenu className="Menu"></PageMenu>*/}
+            <ProfileView className="Profile"></ProfileView>
         </div>
     );
 }
