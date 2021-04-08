@@ -5,7 +5,16 @@ import SpotifyPlayer from 'react-spotify-player';
 class ProfileView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { open: true, userName: 'test name' };
+        // group flag adds an extra tag
+
+        this.state = {
+            open: true,
+            userName: 'test name',
+            groups: this.props.user.groups,
+            contact: this.props.user.contact,
+            skills: this.props.user.skills,
+            goals: this.props.user.goals,
+        };
     }
     // spotify player vars
     size = { width: '100%', height: 300 };
@@ -30,17 +39,18 @@ class ProfileView extends React.Component {
                     </div>
                     <div className={'ProfileInfo'}>
                         <div className={'ProfileItems'}>
-                            Skills: Drummer, Singer, Guitarist, Pianoist, Formal
-                            music education, Songwriting
+                            Skills: {this.state.skills}
                         </div>
 
                         <div className={'ProfileItems'}>
-                            Goals: pro, looking for producer
+                            Goals: {this.state.goals}
                         </div>
 
-                        <div className={'ProfileItems'}>
-                            Group(s): Group A, Group B
-                        </div>
+                        {this.props.group ? (
+                            <div className={'ProfileItems'}>
+                                Group(s): Group A, Group B
+                            </div>
+                        ) : null}
 
                         <div className={'ProfileItems'}>
                             Spotify/bandcamp link:
@@ -75,6 +85,7 @@ class ProfileView extends React.Component {
                         <Tab>Bio</Tab>
                         <Tab>Demos</Tab>
                         <Tab>Followers</Tab>
+                        {this.props.group ? <Tab>Members</Tab> : null}
                     </TabList>
 
                     <TabPanel>
@@ -95,6 +106,9 @@ class ProfileView extends React.Component {
                     <TabPanel>
                         <div>placeholder tabpanel to silence warnings</div>
                     </TabPanel>
+                    {this.state.group ? (
+                        <TabPanel>group members tab</TabPanel>
+                    ) : null}
                 </Tabs>
             </div>
         );

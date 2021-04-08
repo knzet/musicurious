@@ -53,6 +53,13 @@ class App extends Component {
                     if (page === 'profile') {
                         return (
                             <ProfileView
+                                user={{
+                                    userName: 'test Name',
+                                    group: false,
+                                    skills:
+                                        'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
+                                    goals: 'pro, looking for producer',
+                                }}
                                 className="Profile"
                                 handleFollowClick={this.handleFollowClick.bind(
                                     this
@@ -60,6 +67,7 @@ class App extends Component {
                                 handleContactClick={this.handleContactClick.bind(
                                     this
                                 )}
+                                group={true}
                             ></ProfileView>
                         );
                     } else if (page === 'home') {
