@@ -19,6 +19,7 @@ div.Menu {
     background-color: lightgray;
     /* margin:1rem; */
     padding: 0.4rem;
+    margin: 0.5rem 0.5rem 0rem 0rem;
     border-radius: 0.3rem;
     display: inline-flex;
     flex-direction: column;

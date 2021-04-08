@@ -1,13 +1,18 @@
 import Menu, { SubMenu, MenuItem } from 'rc-menu';
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import SpotifyPlayer from 'react-spotify-player';
 
 class ProfileView extends React.Component {
     constructor(props) {
         super(props);
         this.state = { open: true };
     }
-
+    // spotify player vars
+    size = { width: '100%', height: 300 };
+    view = 'list'; // or 'coverart'
+    theme = 'black'; // or 'white'
+    // end spotify
     render() {
         return (
             <div className="ProfileContainer">
@@ -58,7 +63,12 @@ class ProfileView extends React.Component {
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 2</h2>
+                        <SpotifyPlayer
+                            uri="spotify:album:4ss4IGobJB38f1pgogEp7t"
+                            size={this.size}
+                            view={this.view}
+                            theme={this.theme}
+                        />
                     </TabPanel>
                 </Tabs>
             </div>
