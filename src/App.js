@@ -9,10 +9,23 @@ import React, { Component } from 'react';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.navClick = this.navClick.bind(this);
+        this.navClick = this.navClick.bind(this); // need to bind click handler to the right context, in case the component gets re-rendered
+        this.handleFollowClick = this.handleFollowClick.bind(this);
+        this.handleContactClick = this.handleContactClick.bind(this);
     }
     state = {
         page: 'home',
+        follow: '',
+    };
+
+    handleFollowClick = (profile) => {
+        console.log('follow ' + profile);
+        alert('follow ' + profile + ' ?');
+        this.setState({ follow: profile });
+    };
+    handleContactClick = (profile) => {
+        console.log('contact ' + profile);
+        this.setState({ contact: profile });
     };
 
     navClick = (key, item, domEvent, keyPath) => {
@@ -36,19 +49,26 @@ class App extends Component {
                     className="Menu"
                     navClick={this.navClick.bind(this)}
                 ></PageMenu>
-                {(function (page) {
+                {function (page) {
                     if (page === 'profile') {
-                        return <ProfileView className="Profile"></ProfileView>;
+                        return (
+                            <ProfileView
+                                className="Profile"
+                                handleFollowClick={this.handleFollowClick.bind(
+                                    this
+                                )}
+                                handleContactClick={this.handleContactClick.bind(
+                                    this
+                                )}
+                            ></ProfileView>
+                        );
                     } else if (page === 'home') {
                     } else if (page === 'search') {
                     } else {
-                        return (
-                            <div>
-                                attempting to render {this.state.page} page
-                            </div>
-                        );
+                        return <div>attempting to render {page} page</div>;
                     }
-                })(this.state.page)}
+                    // this line is wacky, the immediately invoked function needs to pass this as a parameter so it needs to be bound
+                }.bind(this)(this.state.page)}
             </div>
         );
     }

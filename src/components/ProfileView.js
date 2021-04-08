@@ -5,7 +5,7 @@ import SpotifyPlayer from 'react-spotify-player';
 class ProfileView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { open: true };
+        this.state = { open: true, userName: 'test name' };
     }
     // spotify player vars
     size = { width: '100%', height: 300 };
@@ -16,13 +16,18 @@ class ProfileView extends React.Component {
         return (
             <div className="ProfileContainer">
                 <div className={'Profile'}>
-                    <img
-                        className="ProfileImage"
-                        width="200px"
-                        height="200px"
-                        alt="placeholder img"
-                    />
-                    <div className={'DisplayName'}>Name</div>
+                    <div className="ProfileImageContainer">
+                        <img
+                            src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                            className="ProfileImage"
+                            width="200px"
+                            height="200px"
+                            alt="placeholder img"
+                        />
+                        <div className={'DisplayName'}>
+                            {this.state.userName}
+                        </div>
+                    </div>
                     <div className={'ProfileInfo'}>
                         <div className={'ProfileItems'}>
                             Skills: Drummer, Singer, Guitarist, Pianoist, Formal
@@ -41,8 +46,26 @@ class ProfileView extends React.Component {
                             Spotify/bandcamp link:
                         </div>
 
-                        <button className={'ProfileButton'}> Follow </button>
-                        <button className={'ProfileButton'}> Contact </button>
+                        <button
+                            className={'ProfileButton'}
+                            onClick={() =>
+                                this.props.handleFollowClick(
+                                    this.state.userName
+                                )
+                            }
+                        >
+                            Follow
+                        </button>
+                        <button
+                            className={'ProfileButton'}
+                            onClick={() =>
+                                this.props.handleContactClick(
+                                    this.state.userName
+                                )
+                            }
+                        >
+                            Contact
+                        </button>
                         <button className={'ProfileOptions'}> ... </button>
                     </div>
                 </div>

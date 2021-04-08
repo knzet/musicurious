@@ -15,16 +15,25 @@
     margin-bottom: 1rem;
 }
 
+.ProfileImageContainer {
+    flex-direction: column;
+    flex: 1;
+}
+
 .ProfileImage {
+    flex: 1;
     margin: 1rem;
+    /* min-height: 2rem; */
     background-color: #61dafb;
 }
 
 .DisplayName {
+    /* flex: 1; */
     margin: 1rem;
 }
 
 .ProfileInfo {
+    flex: 4;
     text-align: left;
     align-items: flex-start;
     margin: 1rem;
