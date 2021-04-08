@@ -1,4 +1,3 @@
-import Menu, { SubMenu, MenuItem } from 'rc-menu';
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import SpotifyPlayer from 'react-spotify-player';
@@ -69,6 +68,9 @@ class ProfileView extends React.Component {
                             view={this.view}
                             theme={this.theme}
                         />
+                    </TabPanel>
+                    <TabPanel>
+                        <div>placeholder tabpanel to silence warnings</div>
                     </TabPanel>
                 </Tabs>
             </div>

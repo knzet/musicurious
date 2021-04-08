@@ -6,17 +6,13 @@ class PageMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = { open: true };
-        this.navClick = this.navClick.bind(this);
+        // this.navClick = () => this.props.navClick;
     }
-
     handleClick() {
         this.setState({
             open: !this.state.open,
         });
     }
-    navClick = (key, item, domEvent, keyPath) => {
-        console.log({ key, item });
-    };
 
     render() {
         return (
@@ -37,7 +33,7 @@ class PageMenu extends React.Component {
                     <Menu
                         className="Menu-Container"
                         mode="vertical"
-                        onClick={this.navClick}
+                        onClick={this.props.navClick}
                         transformOrigin={{
                             vertical: 'top',
                             horizontal: 'right',
