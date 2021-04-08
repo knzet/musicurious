@@ -1,0 +1,77 @@
+.ProfileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    /* flex-grow: 10000; */
+    margin-top: 1rem;
+}
+
+.Profile {
+    display: flex;
+    width: 90%;
+    background-color: #c4c4c4;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.ProfileImage {
+    margin: 1rem;
+    background-color: #61dafb;
+}
+
+.DisplayName {
+    margin: 1rem;
+}
+
+.ProfileInfo {
+    text-align: left;
+    align-items: flex-start;
+    margin: 1rem;
+}
+
+.ProfileItems {
+    text-align: left;
+    margin: 1rem;
+    height: auto;
+}
+
+.ProfileButton {
+    background-color: aquamarine;
+    margin: 1rem;
+    position: relative;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 10px;
+}
+
+.ProfileOptions {
+    background-color: aquamarine;
+    margin: 1rem;
+    height: 2rem;
+    width: 3rem;
+    border-radius: 10px;
+}
+
+.ProfileTabs {
+    text-align: left;
+    padding-left: 1rem;
+    background-color: cadetblue;
+    width: 90%;
+}
+
+.TabList {
+    align-items: start;
+}
+
+.BioContainer {
+    background-color: white;
+    margin: 1rem;
+    min-height: 100px;
+    border-radius: 20px;
+}
+
+.Bio {
+    padding: 10px 20px;
+    text-align: left;
+}

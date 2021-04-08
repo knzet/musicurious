@@ -1,4 +1,4 @@
-// import HamburgerMenu from 'react-hamburger-menu';
+import HamburgerMenu from 'react-hamburger-menu';
 import Menu, { SubMenu, MenuItem } from 'rc-menu';
 import React from 'react';
 
@@ -21,24 +21,11 @@ class PageMenu extends React.Component {
     render() {
         return (
             <>
-                <Menu
-                    className="Menu-Container"
-                    mode="vertical"
-                    onClick={this.navClick}
-                >
-                    <MenuItem id="header" className="Menu-Item">
-                        Musicurious
-                    </MenuItem>
-                    <MenuItem className="Menu-Item">
-                        Find People by zip code
-                    </MenuItem>
-                    <MenuItem className="Menu-Item">User Profile</MenuItem>
-                </Menu>
-                {/* <HamburgerMenu
+                <HamburgerMenu
                     isOpen={this.state.open}
                     menuClicked={this.handleClick.bind(this)}
-                    width={18}
-                    height={15}
+                    width={40}
+                    height={40}
                     strokeWidth={1}
                     rotate={0}
                     className="Menu"
@@ -47,9 +34,24 @@ class PageMenu extends React.Component {
                     animationDuration={0.5}
                 />
                 <div className={this.state.open ? 'Menu-Items' : 'invisible'}>
-                    <div className="Menu-Item">menu item 1</div>
-                    <div className="Menu-Item">menu item 2</div>
-                </div> */}
+                    <Menu
+                        className="Menu-Container"
+                        mode="vertical"
+                        onClick={this.navClick}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                    >
+                        <MenuItem id="header" className="Menu-Item">
+                            Musicurious
+                        </MenuItem>
+                        <MenuItem className="Menu-Item">
+                            Find People by zip code
+                        </MenuItem>
+                        <MenuItem className="Menu-Item">User Profile</MenuItem>
+                    </Menu>
+                </div>
             </>
         );
     }

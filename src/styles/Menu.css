@@ -1,0 +1,58 @@
+.Menu-Container {
+    background-color: white;
+    /* margin-left:2rem; */
+    height: auto;
+    /* took this off and moved it to the hamburger and it fixed the menu rendering on top */
+    /* position: fixed; */
+    width: auto;
+    flex: 1;
+}
+
+/* this is the hamburger */
+div.Menu {
+    position: fixed;
+    margin: 1rem;
+}
+
+.Menu-Items {
+    text-align: left;
+    background-color: lightgray;
+    /* margin:1rem; */
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.rc-menu-item {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.rc-menu {
+    /* height:10%; */
+    background-color: inherit;
+}
+
+.Menu-Item {
+    border: 1px;
+    border-color: black;
+    padding: 0.4rem;
+    /* font-size: large; */
+}
+
+.rc-menu-item:hover {
+    background-color: lightblue;
+}
+
+.rc-menu-item#header {
+    background-color: pink;
+}
+
+.invisible {
+    display: none; /* removes it from render instead of just invisible */
+    /* visibility: hidden; */
+}
