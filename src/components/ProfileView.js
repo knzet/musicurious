@@ -9,11 +9,7 @@ class ProfileView extends React.Component {
 
         this.state = {
             open: true,
-            userName: 'test name',
-            groups: this.props.user.groups,
-            contact: this.props.user.contact,
-            skills: this.props.user.skills,
-            goals: this.props.user.goals,
+            user: this.props.user,
         };
     }
     // spotify player vars
@@ -34,21 +30,27 @@ class ProfileView extends React.Component {
                             alt="placeholder img"
                         />
                         <div className={'DisplayName'}>
-                            {this.state.userName}
+                            {this.state.user.name}
                         </div>
                     </div>
                     <div className={'ProfileInfo'}>
                         <div className={'ProfileItems'}>
-                            Skills: {this.state.skills}
+                            Skills: {this.state.user.skills}
                         </div>
 
                         <div className={'ProfileItems'}>
-                            Goals: {this.state.goals}
+                            Goals: {this.state.user.goals}
                         </div>
 
-                        {this.props.group ? (
+                        {this.state.user.isUser ? (
                             <div className={'ProfileItems'}>
-                                Group(s): Group A, Group B
+                                Groups:
+                                <ul>
+                                    {this.state.user.groups.map((group)=>
+                                    <li key ={group.toString()}>
+                                        {group.name}
+                                    </li>)}
+                                </ul>
                             </div>
                         ) : null}
 
@@ -60,7 +62,7 @@ class ProfileView extends React.Component {
                             className={'ProfileButton'}
                             onClick={() =>
                                 this.props.handleFollowClick(
-                                    this.state.userName
+                                    this.state.user.name
                                 )
                             }
                         >
@@ -70,7 +72,7 @@ class ProfileView extends React.Component {
                             className={'ProfileButton'}
                             onClick={() =>
                                 this.props.handleContactClick(
-                                    this.state.userName
+                                    this.state.user.name
                                 )
                             }
                         >
@@ -85,13 +87,13 @@ class ProfileView extends React.Component {
                         <Tab>Bio</Tab>
                         <Tab>Demos</Tab>
                         <Tab>Followers</Tab>
-                        {this.props.group ? <Tab>Members</Tab> : null}
+                        {this.props.user.isUser ? null : <Tab>Members</Tab>}
                     </TabList>
 
                     <TabPanel>
                         <div className={'BioContainer'}>
                             <div className={'Bio'}>
-                                Write you content here...
+                                {this.props.user.bio}
                             </div>
                         </div>
                     </TabPanel>
@@ -106,9 +108,9 @@ class ProfileView extends React.Component {
                     <TabPanel>
                         <div>placeholder tabpanel to silence warnings</div>
                     </TabPanel>
-                    {this.state.group ? (
+                    {this.state.user.isUser ? null : (
                         <TabPanel>group members tab</TabPanel>
-                    ) : null}
+                    )}
                 </Tabs>
             </div>
         );

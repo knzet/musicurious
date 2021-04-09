@@ -5,6 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
 import React, { Component } from 'react';
+import Account from './backend/Account.js';
 
 class App extends Component {
     constructor(props) {
@@ -53,13 +54,7 @@ class App extends Component {
                     if (page === 'profile') {
                         return (
                             <ProfileView
-                                user={{
-                                    userName: 'test Name',
-                                    group: false,
-                                    skills:
-                                        'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                                    goals: 'pro, looking for producer',
-                                }}
+                                user={new Account("Van", true)}
                                 className="Profile"
                                 handleFollowClick={this.handleFollowClick.bind(
                                     this
@@ -79,7 +74,7 @@ class App extends Component {
                 }.bind(this)(this.state.page)}
             </div>
         );
-    }
+    };
 }
 
 export default App;
