@@ -10,6 +10,7 @@ class ProfileView extends React.Component {
         this.state = {
             open: true,
             userName: 'test name',
+            user: this.props.user, // TODO: pass just user object in props
             groups: this.props.user.groups,
             contact: this.props.user.contact,
             skills: this.props.user.skills,
@@ -33,7 +34,12 @@ class ProfileView extends React.Component {
                             height="200px"
                             alt="placeholder img"
                         />
-                        <div className={'DisplayName'}>
+                        <div
+                            className={'DisplayName'}
+                            onClick={() =>
+                                this.props.onProfileClick(this.state.user)
+                            }
+                        >
                             {this.state.userName}
                         </div>
                     </div>
@@ -79,37 +85,38 @@ class ProfileView extends React.Component {
                         <button className={'ProfileOptions'}> ... </button>
                     </div>
                 </div>
+                {this.props.renderType === 'search' ? null : (
+                    <Tabs className={'ProfileTabs'}>
+                        <TabList>
+                            <Tab>Bio</Tab>
+                            <Tab>Demos</Tab>
+                            <Tab>Followers</Tab>
+                            {this.props.group ? <Tab>Members</Tab> : null}
+                        </TabList>
 
-                <Tabs className={'ProfileTabs'}>
-                    <TabList>
-                        <Tab>Bio</Tab>
-                        <Tab>Demos</Tab>
-                        <Tab>Followers</Tab>
-                        {this.props.group ? <Tab>Members</Tab> : null}
-                    </TabList>
-
-                    <TabPanel>
-                        <div className={'BioContainer'}>
-                            <div className={'Bio'}>
-                                Write you content here...
+                        <TabPanel>
+                            <div className={'BioContainer'}>
+                                <div className={'Bio'}>
+                                    Write you content here...
+                                </div>
                             </div>
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                        <SpotifyPlayer
-                            uri="spotify:album:4ss4IGobJB38f1pgogEp7t"
-                            size={this.size}
-                            view={this.view}
-                            theme={this.theme}
-                        />
-                    </TabPanel>
-                    <TabPanel>
-                        <div>placeholder tabpanel to silence warnings</div>
-                    </TabPanel>
-                    {this.state.group ? (
-                        <TabPanel>group members tab</TabPanel>
-                    ) : null}
-                </Tabs>
+                        </TabPanel>
+                        <TabPanel>
+                            <SpotifyPlayer
+                                uri="spotify:album:4ss4IGobJB38f1pgogEp7t"
+                                size={this.size}
+                                view={this.view}
+                                theme={this.theme}
+                            />
+                        </TabPanel>
+                        <TabPanel>
+                            <div>placeholder tabpanel to silence warnings</div>
+                        </TabPanel>
+                        {this.state.group ? (
+                            <TabPanel>group members tab</TabPanel>
+                        ) : null}
+                    </Tabs>
+                )}
             </div>
         );
     }

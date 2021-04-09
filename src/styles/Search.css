@@ -1,0 +1,8 @@
+.SearchView {
+    display: flex;
+    flex-direction: column;
+}
+.SearchProfileContainer {
+    display: flex;
+    flex-direction: row;
+}

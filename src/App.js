@@ -1,9 +1,11 @@
 import './styles/App.css';
 import './styles/Menu.css';
 import './styles/Profile.css';
+import './styles/Search.css';
 import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
+import SearchView from './components/SearchView';
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -12,11 +14,17 @@ class App extends Component {
         this.navClick = this.navClick.bind(this); // need to bind click handler to the right context, in case the component gets re-rendered
         this.handleFollowClick = this.handleFollowClick.bind(this);
         this.handleContactClick = this.handleContactClick.bind(this);
+        this.handleProfileClickFromSearch = this.handleProfileClickFromSearch.bind(
+            this
+        );
     }
     state = {
-        page: 'home',
+        page: 'search',
+        user: {},
         follow: '',
     };
+    // handlers /////////////////////////////////
+    // if adding a new handler, bind to this in constructor
 
     handleFollowClick = (profile) => {
         console.log('follow ' + profile);
@@ -38,6 +46,12 @@ class App extends Component {
             this.setState({ page: 'home' });
         }
     };
+
+    handleProfileClickFromSearch = (user) => {
+        this.setState({ page: 'profile', user: user });
+        // renderProfile(user);
+    };
+    //////////////////////////////////
 
     render() {
         return (
@@ -71,7 +85,15 @@ class App extends Component {
                             ></ProfileView>
                         );
                     } else if (page === 'home') {
+                        <div>test div</div>;
                     } else if (page === 'search') {
+                        return (
+                            <SearchView
+                                handleProfileClick={this.handleProfileClickFromSearch.bind(
+                                    this
+                                )}
+                            ></SearchView>
+                        );
                     } else {
                         return <div>attempting to render {page} page</div>;
                     }
