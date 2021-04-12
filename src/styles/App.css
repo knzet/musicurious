@@ -4,8 +4,14 @@
     align-content: flex-start;
     background-color: aliceblue;
     display: flex;
+    flex-direction: column;
+}
+
+.Content{
+    display: flex;
     flex-direction: row;
 }
+
 body {
     height: 100%;
 }
