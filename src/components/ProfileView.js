@@ -112,7 +112,7 @@ class ProfileView extends React.Component {
                         <TabPanel>
                             <div>placeholder tabpanel to silence warnings</div>
                         </TabPanel>
-                        {this.state.group ? (
+                        {this.props.group ? (
                             <TabPanel>group members tab</TabPanel>
                         ) : null}
                     </Tabs>

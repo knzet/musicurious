@@ -6,7 +6,10 @@ import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
 import SearchView from './components/SearchView';
+import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
+
+const history = createBrowserHistory({ forceRefresh: true });
 
 class App extends Component {
     constructor(props) {
@@ -19,8 +22,8 @@ class App extends Component {
         );
     }
     state = {
-        page: 'search',
-        user: {},
+        page: 'profile',
+        user: { userName: 'testUser' },
         follow: '',
     };
     // handlers /////////////////////////////////
@@ -38,17 +41,21 @@ class App extends Component {
 
     navClick = (key, item, domEvent, keyPath) => {
         console.log({ key, item, domEvent, keyPath });
+        var page;
         if (key.key === 'item_2') {
-            this.setState({ page: 'profile' });
+            page = 'profile';
         } else if (key.key === 'item_1') {
-            this.setState({ page: 'search' });
+            page = 'search';
         } else if (key.key === 'item_0') {
-            this.setState({ page: 'home' });
+            page = 'home';
         }
+        this.setState({ page: page });
+        // window.location.pathname !== '/' + page && history.push('/' + page);
     };
 
     handleProfileClickFromSearch = (user) => {
         this.setState({ page: 'profile', user: user });
+        console.log(user);
         // renderProfile(user);
     };
     //////////////////////////////////
@@ -64,7 +71,9 @@ class App extends Component {
                     navClick={this.navClick.bind(this)}
                 ></PageMenu>
                 {function (page) {
+                    console.log(window.location.pathname);
                     if (page === 'profile') {
+                        // console.log(this.state.user.userName);
                         return (
                             <ProfileView
                                 user={{
