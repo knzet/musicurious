@@ -10,7 +10,6 @@ class ProfileView extends React.Component {
         this.state = {
             open: true,
             user: this.props.user,
-
         };
     }
     // spotify player vars
@@ -37,7 +36,7 @@ class ProfileView extends React.Component {
                                 this.props.onProfileClick(this.state.user)
                             }
                         >
-                             {this.state.user.name}
+                            {this.state.user.name}
                         </div>
                     </div>
                     <div className={'ProfileInfo'}>
@@ -53,10 +52,11 @@ class ProfileView extends React.Component {
                             <div className={'ProfileItems'}>
                                 Groups:
                                 <ul>
-                                    {this.state.user.groups.map((group)=>
-                                    <li key ={group.toString()}>
-                                        {group.name}
-                                    </li>)}
+                                    {this.state.user.groups.map((group) => (
+                                        <li key={group.toString()}>
+                                            {group.name}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         ) : null}
@@ -94,39 +94,33 @@ class ProfileView extends React.Component {
                             <Tab>Bio</Tab>
                             <Tab>Demos</Tab>
                             <Tab>Followers</Tab>
-                            {this.props.group ? <Tab>Members</Tab> : null}
+                            {this.props.user.isUser ? null : <Tab>Members</Tab>}
                         </TabList>
-                <Tabs className={'ProfileTabs'}>
-                    <TabList>
-                        <Tab>Bio</Tab>
-                        <Tab>Demos</Tab>
-                        <Tab>Followers</Tab>
-                        {this.props.user.isUser ? null : <Tab>Members</Tab>}
-                    </TabList>
 
-                    <TabPanel>
-                        <div className={'BioContainer'}>
-                            <div className={'Bio'}>
-                                {this.props.user.bio}
+                        <TabPanel>
+                            <div className={'BioContainer'}>
+                                <div className={'Bio'}>
+                                    {this.props.user.bio}
+                                </div>
                             </div>
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                        <SpotifyPlayer
-                            uri="spotify:album:4ss4IGobJB38f1pgogEp7t"
-                            size={this.size}
-                            view={this.view}
-                            theme={this.theme}
-                        />
-                    </TabPanel>
-                    <TabPanel>
-                        <div>placeholder tabpanel to silence warnings</div>
-                    </TabPanel>
-                    {this.state.user.isUser ? null : (
-                        <TabPanel>group members tab</TabPanel>
-                    )}
-                </Tabs>
-
+                        </TabPanel>
+                        <TabPanel>
+                            <SpotifyPlayer
+                                uri="spotify:album:4ss4IGobJB38f1pgogEp7t"
+                                size={this.size}
+                                view={this.view}
+                                theme={this.theme}
+                            />
+                        </TabPanel>
+                        <TabPanel>
+                            <div>placeholder tabpanel to silence warnings</div>
+                        </TabPanel>
+                        {this.state.user.isUser ? null : (
+                            <TabPanel>group members tab</TabPanel>
+                        )}
+                    </Tabs>
+                )}
+                {/* search render skips the tabs */}
             </div>
         );
     }

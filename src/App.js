@@ -77,13 +77,17 @@ class App extends Component {
                         if (page === 'profile') {
                             return (
                                 <ProfileView
-                                    user={{
-                                        userName: 'test Name',
-                                        group: false,
-                                        skills:
-                                            'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                                        goals: 'pro, looking for producer',
-                                    }}
+                                    user={
+                                        // TODO: use dummy users for all the profileviews. if some dummy users have different skills, use the search to filter by skill
+                                        new Account({
+                                            isUser: true,
+                                            userName: 'test Name',
+                                            contact: 'email@web.com',
+                                            skills:
+                                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
+                                            goals: 'pro, looking for producer',
+                                        })
+                                    }
                                     className="Profile"
                                     handleFollowClick={this.handleFollowClick.bind(
                                         this
@@ -91,7 +95,6 @@ class App extends Component {
                                     handleContactClick={this.handleContactClick.bind(
                                         this
                                     )}
-                                    group={true}
                                 ></ProfileView>
                             );
                         } else if (page === 'home') {
@@ -112,7 +115,7 @@ class App extends Component {
                 </div>
             </div>
         );
-    };
+    }
 }
 
 export default App;
