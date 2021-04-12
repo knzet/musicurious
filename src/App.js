@@ -9,6 +9,7 @@ import ProfileView from './components/ProfileView';
 import SearchView from './components/SearchView';
 import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
+import Account from './backend/Account.js';
 import TopBar from './components/TopBar';
 
 const history = createBrowserHistory({ forceRefresh: true });
@@ -111,7 +112,7 @@ class App extends Component {
                 </div>
             </div>
         );
-    }
+    };
 }
 
 export default App;

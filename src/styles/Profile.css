@@ -54,6 +54,11 @@
     border-radius: 10px;
 }
 
+#ProfileButton ul{
+    display: flex;
+    list-style: none;
+}
+
 .ProfileOptions {
     background-color: aquamarine;
     margin: 1rem;
