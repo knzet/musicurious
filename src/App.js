@@ -1,11 +1,18 @@
 import './styles/App.css';
 import './styles/Menu.css';
 import './styles/Profile.css';
+import './styles/Search.css';
+import './styles/TopBar.css';
 import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
+import SearchView from './components/SearchView';
+import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
 import Account from './backend/Account.js';
+import TopBar from './components/TopBar';
+
+const history = createBrowserHistory({ forceRefresh: true });
 
 class App extends Component {
     constructor(props) {
@@ -13,11 +20,17 @@ class App extends Component {
         this.navClick = this.navClick.bind(this); // need to bind click handler to the right context, in case the component gets re-rendered
         this.handleFollowClick = this.handleFollowClick.bind(this);
         this.handleContactClick = this.handleContactClick.bind(this);
+        this.handleProfileClickFromSearch = this.handleProfileClickFromSearch.bind(
+            this
+        );
     }
     state = {
-        page: 'home',
+        page: 'profile',
+        user: { userName: 'testUser' },
         follow: '',
     };
+    // handlers /////////////////////////////////
+    // if adding a new handler, bind to this in constructor
 
     handleFollowClick = (profile) => {
         console.log('follow ' + profile);
@@ -31,47 +44,72 @@ class App extends Component {
 
     navClick = (key, item, domEvent, keyPath) => {
         console.log({ key, item, domEvent, keyPath });
+        var page;
         if (key.key === 'item_2') {
-            this.setState({ page: 'profile' });
+            page = 'profile';
         } else if (key.key === 'item_1') {
-            this.setState({ page: 'search' });
+            page = 'search';
         } else if (key.key === 'item_0') {
-            this.setState({ page: 'home' });
+            page = 'home';
         }
+        this.setState({ page: page });
+        // window.location.pathname !== '/' + page && history.push('/' + page);
     };
+
+    handleProfileClickFromSearch = (user) => {
+        this.setState({ page: 'profile', user: user });
+        console.log(user);
+        // renderProfile(user);
+    };
+    //////////////////////////////////
 
     render() {
         return (
             <div className="App">
-                {/* <div width="100%" background-color="red">
-                search
-            </div> */}
-                <PageMenu
-                    className="Menu"
-                    navClick={this.navClick.bind(this)}
-                ></PageMenu>
-                {function (page) {
-                    if (page === 'profile') {
-                        return (
-                            <ProfileView
-                                user={new Account("Van", true)}
-                                className="Profile"
-                                handleFollowClick={this.handleFollowClick.bind(
-                                    this
-                                )}
-                                handleContactClick={this.handleContactClick.bind(
-                                    this
-                                )}
-                                group={true}
-                            ></ProfileView>
-                        );
-                    } else if (page === 'home') {
-                    } else if (page === 'search') {
-                    } else {
-                        return <div>attempting to render {page} page</div>;
-                    }
-                    // this line is wacky, the immediately invoked function needs to pass this as a parameter so it needs to be bound
-                }.bind(this)(this.state.page)}
+                <TopBar></TopBar>
+                <div className={'Content'}>
+                    <PageMenu
+                        className="Menu"
+                        navClick={this.navClick.bind(this)}
+                    ></PageMenu>
+                    {function (page) {
+                        console.log(window.location.pathname);
+                        if (page === 'profile') {
+                            return (
+                                <ProfileView
+                                    user={{
+                                        userName: 'test Name',
+                                        group: false,
+                                        skills:
+                                            'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
+                                        goals: 'pro, looking for producer',
+                                    }}
+                                    className="Profile"
+                                    handleFollowClick={this.handleFollowClick.bind(
+                                        this
+                                    )}
+                                    handleContactClick={this.handleContactClick.bind(
+                                        this
+                                    )}
+                                    group={true}
+                                ></ProfileView>
+                            );
+                        } else if (page === 'home') {
+                            <div>test div</div>;
+                        } else if (page === 'search') {
+                            return (
+                                <SearchView
+                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
+                                        this
+                                    )}
+                                ></SearchView>
+                            );
+                        } else {
+                            return <div>attempting to render {page} page</div>;
+                        }
+                        // this line is wacky, the immediately invoked function needs to pass this as a parameter so it needs to be bound
+                    }.bind(this)(this.state.page)}
+                </div>
             </div>
         );
     };

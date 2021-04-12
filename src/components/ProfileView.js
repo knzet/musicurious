@@ -10,6 +10,7 @@ class ProfileView extends React.Component {
         this.state = {
             open: true,
             user: this.props.user,
+
         };
     }
     // spotify player vars
@@ -29,8 +30,14 @@ class ProfileView extends React.Component {
                             height="200px"
                             alt="placeholder img"
                         />
-                        <div className={'DisplayName'}>
-                            {this.state.user.name}
+
+                        <div
+                            className={'DisplayName'}
+                            onClick={() =>
+                                this.props.onProfileClick(this.state.user)
+                            }
+                        >
+                             {this.state.user.name}
                         </div>
                     </div>
                     <div className={'ProfileInfo'}>
@@ -81,7 +88,14 @@ class ProfileView extends React.Component {
                         <button className={'ProfileOptions'}> ... </button>
                     </div>
                 </div>
-
+                {this.props.renderType === 'search' ? null : (
+                    <Tabs className={'ProfileTabs'}>
+                        <TabList>
+                            <Tab>Bio</Tab>
+                            <Tab>Demos</Tab>
+                            <Tab>Followers</Tab>
+                            {this.props.group ? <Tab>Members</Tab> : null}
+                        </TabList>
                 <Tabs className={'ProfileTabs'}>
                     <TabList>
                         <Tab>Bio</Tab>
@@ -112,6 +126,7 @@ class ProfileView extends React.Component {
                         <TabPanel>group members tab</TabPanel>
                     )}
                 </Tabs>
+
             </div>
         );
     }

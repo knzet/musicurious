@@ -27,8 +27,13 @@ div.Menu {
     align-items: flex-start;
 }
 
+.rc-menu {
+    padding: 0;
+    list-style-type: none;
+}
+
 .rc-menu-item {
-    list-style: none;
+    list-style-type: none;
     padding-left: 0;
     font-size: 1.3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -37,6 +42,11 @@ div.Menu {
 .rc-menu {
     /* height:10%; */
     background-color: inherit;
+    width: 100%;
+}
+
+.Menu-Items {
+    width: 10%;
 }
 
 .Menu-Item {
