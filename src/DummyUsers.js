@@ -8,6 +8,7 @@ How to use:
     db.getu(0) // for geting user0
 
 Author: Van Pham <vnp7514@rit.edu>
+        Kenn Taylor
  */
 import Account from './backend/Account';
 
