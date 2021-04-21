@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileView from './ProfileView';
+import accounts from '../DummyUsers.js';
 
 class SearchView extends React.Component {
     constructor(props) {
@@ -18,13 +19,13 @@ class SearchView extends React.Component {
                         onProfileClick={this.props.handleProfileClick.bind(
                             this
                         )}
-                        user={{
-                            userName: 'test Name',
-                            group: false,
-                            skills:
-                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                            goals: 'pro, looking for producer',
-                        }}
+                        handleFollowClick={this.props.handleFollowClick.bind(
+                            this
+                        )}
+                        handleContactClick={this.props.handleContactClick.bind(
+                            this
+                        )}
+                        user={accounts[0]}
                         className="Profile"
                     ></ProfileView>
                     <ProfileView
@@ -32,29 +33,29 @@ class SearchView extends React.Component {
                         onProfileClick={this.props.handleProfileClick.bind(
                             this
                         )}
-                        user={{
-                            userName: 'test Name',
-                            group: false,
-                            skills:
-                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                            goals: 'pro, looking for producer',
-                        }}
+                        handleFollowClick={this.props.handleFollowClick.bind(
+                            this
+                        )}
+                        handleContactClick={this.props.handleContactClick.bind(
+                            this
+                        )}
+                        user={accounts[1]}
                         className="Profile"
                     ></ProfileView>
-                </div>{' '}
+                </div>
                 <div className="SearchProfileContainer">
                     <ProfileView
                         renderType="search"
                         onProfileClick={this.props.handleProfileClick.bind(
                             this
                         )}
-                        user={{
-                            userName: 'test Name',
-                            group: false,
-                            skills:
-                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                            goals: 'pro, looking for producer',
-                        }}
+                        handleFollowClick={this.props.handleFollowClick.bind(
+                            this
+                        )}
+                        handleContactClick={this.props.handleContactClick.bind(
+                            this
+                        )}
+                        user={accounts[2]}
                         className="Profile"
                     ></ProfileView>
                     <ProfileView
@@ -62,13 +63,13 @@ class SearchView extends React.Component {
                         onProfileClick={this.props.handleProfileClick.bind(
                             this
                         )}
-                        user={{
-                            userName: 'test Name',
-                            group: false,
-                            skills:
-                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                            goals: 'pro, looking for producer',
-                        }}
+                        handleFollowClick={this.props.handleFollowClick.bind(
+                            this
+                        )}
+                        handleContactClick={this.props.handleContactClick.bind(
+                            this
+                        )}
+                        user={accounts[3]}
                         className="Profile"
                     ></ProfileView>
                 </div>

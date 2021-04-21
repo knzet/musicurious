@@ -1,6 +1,8 @@
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import SpotifyPlayer from 'react-spotify-player';
+import userimg from '../userimg.jpeg';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 class ProfileView extends React.Component {
     constructor(props) {
@@ -23,20 +25,27 @@ class ProfileView extends React.Component {
                 <div className={'Profile'}>
                     <div className="ProfileImageContainer">
                         <img
-                            src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                            src={userimg}
                             className="ProfileImage"
-                            width="200px"
-                            height="200px"
+                            width="150px"
+                            height="150px"
                             alt="placeholder img"
                         />
 
                         <div
                             className={'DisplayName'}
-                            onClick={() =>
-                                this.props.onProfileClick(this.state.user)
+                            onClick={
+                                // don't need to click name to go to profile when we are viewing the profile, only on search page
+                                this.props.renderType === 'search'
+                                    ? () => {
+                                          this.props.onProfileClick(
+                                              this.state.user
+                                          );
+                                      }
+                                    : null
                             }
                         >
-                            {this.state.user.name}
+                            {this.state.user.userName}
                         </div>
                     </div>
                     <div className={'ProfileInfo'}>
@@ -45,7 +54,8 @@ class ProfileView extends React.Component {
                         </div>
 
                         <div className={'ProfileItems'}>
-                            Goals: {this.state.user.goals}
+                            {console.log(this.props.user)}
+                            Goals: {this.props.user.goals}
                         </div>
 
                         {this.state.user.isUser ? (

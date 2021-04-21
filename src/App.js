@@ -12,6 +12,8 @@ import React, { Component } from 'react';
 import Account from './backend/Account.js';
 import TopBar from './components/TopBar';
 
+import accounts from './DummyUsers';
+
 const history = createBrowserHistory({ forceRefresh: true });
 
 class App extends Component {
@@ -26,7 +28,7 @@ class App extends Component {
     }
     state = {
         page: 'profile',
-        user: { userName: 'testUser' },
+        // user: { userName: 'testUser' },
         follow: '',
     };
     // handlers /////////////////////////////////
@@ -79,14 +81,9 @@ class App extends Component {
                                 <ProfileView
                                     user={
                                         // TODO: use dummy users for all the profileviews. if some dummy users have different skills, use the search to filter by skill
-                                        new Account({
-                                            isUser: true,
-                                            userName: 'test Name',
-                                            contact: 'email@web.com',
-                                            skills:
-                                                'Drummer, Singer, Guitarist, Pianoist, Formal music education, Songwriting',
-                                            goals: 'pro, looking for producer',
-                                        })
+                                        this.state.user
+                                            ? this.state.user
+                                            : accounts[0]
                                     }
                                     className="Profile"
                                     handleFollowClick={this.handleFollowClick.bind(
@@ -103,6 +100,12 @@ class App extends Component {
                             return (
                                 <SearchView
                                     handleProfileClick={this.handleProfileClickFromSearch.bind(
+                                        this
+                                    )}
+                                    handleFollowClick={this.handleFollowClick.bind(
+                                        this
+                                    )}
+                                    handleContactClick={this.handleContactClick.bind(
                                         this
                                     )}
                                 ></SearchView>

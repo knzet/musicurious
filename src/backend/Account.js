@@ -15,10 +15,10 @@ export default class Account {
     // constructor(name, isUser) {
     constructor(user) {
         let bio = user.bio ? user.bio : null; // if we specify a bio in the construction, assume we are making a dummy user
-        let { name, isUser } = user; // fun with js
+        let { userName, isUser } = user; // fun with js
         if (bio) {
             this.isUser = isUser; // true if this is a user, false if group
-            this.name = name; // Name of the account
+            this.userName = userName; // Name of the account
             this.contact = null; // Contact info
             this.avatar = null; // Avatar picture
             this.pictures = []; // Collection of pictures
@@ -48,6 +48,8 @@ export default class Account {
             let {
                 contact,
                 avatar,
+                userName,
+                goals,
                 pictures,
                 skills,
                 bio,
@@ -60,10 +62,12 @@ export default class Account {
                 collaborators,
             } = user;
 
+            this.userName = userName;
             this.contact = contact;
             this.avatar = avatar;
             this.pictures = pictures;
             this.skills = skills;
+            this.goals = goals;
             this.bio = bio;
             this.songs = songs;
             this.followers = followers;
