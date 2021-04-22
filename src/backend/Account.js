@@ -72,15 +72,16 @@ export default class Account {
             this.songs = songs;
             this.followers = followers;
             this.posts = posts;
+            this.isUser = isUser;
 
             // if this is a group then no friends
             this.friends = isUser ? [] : friends; // friends user has
             // if this is a group then no groups
             this.groups = isUser ? [] : groups; // list of groups that user is in
             // Only group can have members
-            this.members = isUser ? null : members;
+            this.members = isUser ? members : [];
             // Only group can have collaborators
-            this.collaborators = isUser ? null : collaborators;
+            this.collaborators = isUser ? collaborators : [];
         }
     }
 }
