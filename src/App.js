@@ -3,10 +3,12 @@ import './styles/Menu.css';
 import './styles/Profile.css';
 import './styles/Search.css';
 import './styles/TopBar.css';
+import './styles/Home.css';
 import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
 import SearchView from './components/SearchView';
+import HomeView from "./components/HomeView";
 import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
 import Account from './backend/Account.js';
@@ -27,7 +29,7 @@ class App extends Component {
         );
     }
     state = {
-        page: 'profile',
+        page: 'home',
         // user: { userName: 'testUser' },
         follow: '',
     };
@@ -95,7 +97,16 @@ class App extends Component {
                                 ></ProfileView>
                             );
                         } else if (page === 'home') {
-                            <div>test div</div>;
+                            //<div>test div</div>;
+                            return (
+                                <HomeView
+                                    user={
+                                        this.state.user
+                                            ? this.state.user
+                                            : accounts[6]
+                                    }>
+                                </HomeView>
+                            );
                         } else if (page === 'search') {
                             return (
                                 <SearchView

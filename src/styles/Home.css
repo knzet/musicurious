@@ -1,0 +1,16 @@
+.PostContainer {
+    display: flex;
+}
+
+.Post {
+    display: flex;
+    flex-direction: column;
+}
+
+.PostContent {
+    display: flex;
+}
+
+.Timestamp {
+    display: flex;
+}
