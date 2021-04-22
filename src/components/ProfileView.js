@@ -54,7 +54,7 @@ class ProfileView extends React.Component {
                         </div>
 
                         <div className={'ProfileItems'}>
-                            {console.log(this.props.user)}
+                            {/* {console.log(this.props.user)} */}
                             Goals: {this.props.user.goals}
                         </div>
 

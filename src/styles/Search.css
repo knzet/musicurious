@@ -1,10 +1,12 @@
 .SearchView {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
 }
 .SearchProfileContainer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .react-search-field-input {

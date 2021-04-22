@@ -14,64 +14,29 @@ class SearchView extends React.Component {
         return (
             <div className="SearchView">
                 <div className="SearchProfileContainer">
-                    <ProfileView
-                        renderType="search"
-                        onProfileClick={this.props.handleProfileClick.bind(
-                            this
-                        )}
-                        handleFollowClick={this.props.handleFollowClick.bind(
-                            this
-                        )}
-                        handleContactClick={this.props.handleContactClick.bind(
-                            this
-                        )}
-                        user={accounts[0]}
-                        className="Profile"
-                    ></ProfileView>
-                    <ProfileView
-                        renderType="search"
-                        onProfileClick={this.props.handleProfileClick.bind(
-                            this
-                        )}
-                        handleFollowClick={this.props.handleFollowClick.bind(
-                            this
-                        )}
-                        handleContactClick={this.props.handleContactClick.bind(
-                            this
-                        )}
-                        user={accounts[1]}
-                        className="Profile"
-                    ></ProfileView>
-                </div>
-                <div className="SearchProfileContainer">
-                    <ProfileView
-                        renderType="search"
-                        onProfileClick={this.props.handleProfileClick.bind(
-                            this
-                        )}
-                        handleFollowClick={this.props.handleFollowClick.bind(
-                            this
-                        )}
-                        handleContactClick={this.props.handleContactClick.bind(
-                            this
-                        )}
-                        user={accounts[2]}
-                        className="Profile"
-                    ></ProfileView>
-                    <ProfileView
-                        renderType="search"
-                        onProfileClick={this.props.handleProfileClick.bind(
-                            this
-                        )}
-                        handleFollowClick={this.props.handleFollowClick.bind(
-                            this
-                        )}
-                        handleContactClick={this.props.handleContactClick.bind(
-                            this
-                        )}
-                        user={accounts[3]}
-                        className="Profile"
-                    ></ProfileView>
+                    {/* // only render results that match the query */}
+                    {accounts.map((user) => {
+                        return user.skills.toUpperCase().includes(
+                            this.props.query.toUpperCase()
+                            //  || // TODO make this safe if user does not have a bio
+                            //     user.bio.contains(this.props.query)
+                        ) ? (
+                            <ProfileView
+                                renderType="search"
+                                onProfileClick={this.props.handleProfileClick.bind(
+                                    this
+                                )}
+                                handleFollowClick={this.props.handleFollowClick.bind(
+                                    this
+                                )}
+                                handleContactClick={this.props.handleContactClick.bind(
+                                    this
+                                )}
+                                user={user}
+                                className="Profile"
+                            ></ProfileView>
+                        ) : null;
+                    })}
                 </div>
             </div>
         );

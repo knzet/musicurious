@@ -25,6 +25,7 @@ class App extends Component {
         this.handleProfileClickFromSearch = this.handleProfileClickFromSearch.bind(
             this
         );
+        this.handleSearch = this.handleSearch.bind(this);
     }
     state = {
         page: 'profile',
@@ -33,6 +34,11 @@ class App extends Component {
     };
     // handlers /////////////////////////////////
     // if adding a new handler, bind to this in constructor
+
+    handleSearch = (query) => {
+        console.log(query);
+        this.setState({ query, page: 'search' });
+    };
 
     handleFollowClick = (profile) => {
         console.log('follow ' + profile);
@@ -68,14 +74,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <TopBar></TopBar>
+                <TopBar handleSearch={this.handleSearch.bind(this)}></TopBar>
                 <div className={'Content'}>
                     <PageMenu
                         className="Menu"
                         navClick={this.navClick.bind(this)}
                     ></PageMenu>
                     {function (page) {
-                        console.log(window.location.pathname);
+                        // console.log(window.location.pathname);
                         if (page === 'profile') {
                             return (
                                 <ProfileView
@@ -99,6 +105,7 @@ class App extends Component {
                         } else if (page === 'search') {
                             return (
                                 <SearchView
+                                    query={this.state.query}
                                     handleProfileClick={this.handleProfileClickFromSearch.bind(
                                         this
                                     )}
