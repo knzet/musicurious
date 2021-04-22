@@ -10,7 +10,7 @@ export default class Post {
         this.msg = msg;
         this.user = user;
         let date = new Date();
-        this.time = "Posted on " + date.getMonth() +
+        this.time = "Posted on " + (date.getMonth() + 1) +
             '/' + date.getDate() + '/' + date.getFullYear() +
             ' ' + date.getHours() + ':' + date.getMinutes();
     }
