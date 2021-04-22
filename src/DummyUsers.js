@@ -11,6 +11,7 @@ Author: Van Pham <vnp7514@rit.edu>
         Kenn Taylor
  */
 import Account from './backend/Account';
+import Post from './components/Post';
 
 var accounts = []; // List of users and groups
 
@@ -67,5 +68,14 @@ const u5 = new Account({
     skills: 'piano',
     goals: 'Being a part of the best group',
 });
-accounts.push(u0, u1, u2, u3, u4, u5);
+
+// Users with a lot of posts
+const u6 = new Account({
+    isUser: true,
+    userName: 'Talkative',
+    posts: [],
+});
+u6.posts.push(new Post({msg:'hahahahaha', user:u6}),
+    new Post({msg:'second message', user:u6}));
+accounts.push(u0, u1, u2, u3, u4, u5, u6);
 export default accounts;
