@@ -33,6 +33,7 @@ class App extends Component {
         page: 'home',
         // user: { userName: 'testUser' },
         follow: '',
+        query: '',
     };
     // handlers /////////////////////////////////
     // if adding a new handler, bind to this in constructor

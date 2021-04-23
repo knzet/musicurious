@@ -52,6 +52,7 @@ const u3 = new Account({
     bio: 'Best group 1 in the world',
     goals: 'Seeking music talents out there',
     location: 'Top of the world',
+    skills: 'None',
 });
 const u4 = new Account({
     isUser: false,
@@ -74,6 +75,7 @@ const u6 = new Account({
     isUser: true,
     userName: 'Talkative',
     posts: [],
+    skills: 'None',
 });
 u6.posts.push(new Post({msg:'hahahahaha', user:u6}),
     new Post({msg:'second message', user:u6}));
