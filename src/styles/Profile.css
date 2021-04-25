@@ -32,6 +32,12 @@
     margin: 1rem;
 }
 
+.DisplayName:hover{
+    color: blue;
+    text-decoration: underline blue;
+    font-weight: bold;
+}
+
 .ProfileInfo {
     flex: 4;
     text-align: left;
