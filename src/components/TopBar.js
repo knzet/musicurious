@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchField from 'react-search-field';
+import bellimg from '../Bell.png';
 
 class TopBar extends React.Component {
     // constructor(props) {
@@ -26,7 +27,7 @@ class TopBar extends React.Component {
                     </div>
                     <div className={'AlertImg'}>
                         {' '}
-                        <img alt={'Bell'}></img>{' '}
+                        <img src={bellimg} className={'bell'} alt={'Bell'}></img>{' '}
                     </div>
                 </div>
             </>
