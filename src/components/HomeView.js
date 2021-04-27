@@ -49,7 +49,9 @@ export default class HomeView extends React.Component{
     }
 
     render(){
-        this.getFeed();
+        if (this.state.feed.length === 0) {
+            this.getFeed();
+        }
         return (
             <div className={'PostContainer'}>
                 {this.state.feed.map((post,index) => (
