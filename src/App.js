@@ -111,8 +111,7 @@ class App extends Component {
                                         this.state.user
                                             ? this.state.user
                                             : accounts[6]
-                                    }>
-                                </HomeView>
+                                    }></HomeView>
                             );
                         } else if (page === 'search') {
                             return (
