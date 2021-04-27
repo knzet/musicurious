@@ -4,11 +4,12 @@ import './styles/Profile.css';
 import './styles/Search.css';
 import './styles/TopBar.css';
 import './styles/Home.css';
+import './styles/Post.css';
 import 'react-tabs/style/react-tabs.css';
 import PageMenu from './components/PageMenu';
 import ProfileView from './components/ProfileView';
 import SearchView from './components/SearchView';
-import HomeView from "./components/HomeView";
+import HomeView from './components/HomeView';
 import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
 import Account from './backend/Account.js';
@@ -80,6 +81,7 @@ class App extends Component {
                 <TopBar handleSearch={this.handleSearch.bind(this)}></TopBar>
                 <div className={'Content'}>
                     <PageMenu
+                        page={this.state.page}
                         className="Menu"
                         navClick={this.navClick.bind(this)}
                     ></PageMenu>
@@ -114,7 +116,8 @@ class App extends Component {
                                     }
                                     handleProfileClick={this.handleProfileClickFromSearch.bind(
                                         this
-                                    )}></HomeView>
+                                    )}
+                                ></HomeView>
                             );
                         } else if (page === 'search') {
                             return (

@@ -1,13 +1,19 @@
+html,
+body,
+#root,
 .App {
     height: 100%;
+}
+
+.App {
     text-align: center;
     align-content: flex-start;
-    background-color: aliceblue;
+    background-color: #4e4e4e;
     display: flex;
     flex-direction: column;
 }
 
-.Content{
+.Content {
     display: flex;
     flex-direction: row;
 }
@@ -28,7 +34,7 @@ body {
 }
 
 .App-header {
-    background-color: #282c34;
+    /* background-color: #fdfdff; */
     min-height: 100vh;
     /* display: flex; */
     /* flex-direction: column; */
@@ -39,7 +45,7 @@ body {
 }
 
 .App-link {
-    color: #61dafb;
+    color: #3185fc;
 }
 
 @keyframes App-logo-spin {
