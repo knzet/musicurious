@@ -75,13 +75,13 @@ export default class Account {
             this.isUser = isUser;
 
             // if this is a group then no friends
-            this.friends = isUser ? [] : friends; // friends user has
+            this.friends = isUser ? (friends === undefined ? [] : friends) : null; // friends user has
             // if this is a group then no groups
-            this.groups = isUser ? [] : groups; // list of groups that user is in
+            this.groups = isUser ? (groups === undefined ? [] : groups) : null; // list of groups that user is in
             // Only group can have members
-            this.members = isUser ? members : [];
+            this.members = isUser ? null : (members === undefined ? [] : members);
             // Only group can have collaborators
-            this.collaborators = isUser ? collaborators : [];
+            this.collaborators = isUser ? null : (collaborators === undefined ? [] : collaborators);
         }
     }
 }
