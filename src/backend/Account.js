@@ -71,7 +71,7 @@ export default class Account {
             this.bio = bio;
             this.songs = songs;
             this.followers = followers;
-            this.posts = posts;
+            this.posts = posts === undefined ? [] : posts;
             this.isUser = isUser;
 
             // if this is a group then no friends
