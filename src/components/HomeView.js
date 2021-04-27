@@ -34,7 +34,7 @@ export default class HomeView extends React.Component{
     handleSubmitInMakePost(event){
         this.state.feed.splice(0,0,
             new Post({user: this.state.user, msg: this.state.newText}));
-        this.setState({});
+        this.setState({newText: ""});
         event.preventDefault();
     }
 
@@ -69,7 +69,7 @@ export default class HomeView extends React.Component{
     addPost(list) {
         for (let user of list) {
             for (let post of user.posts) {
-                this.state.feed.push(post);
+                this.state.feed.splice(0,0, post);
             }
         }
     }
@@ -81,7 +81,7 @@ export default class HomeView extends React.Component{
      */
     getFeed(){
         for (let post of this.state.user.posts) {
-            this.state.feed.push(post);
+            this.state.feed.splice(0,0, post);
         }
         if (this.state.user.isUser){
             this.addPost(this.state.user.friends);
