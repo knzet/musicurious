@@ -69,7 +69,7 @@ class App extends Component {
 
     handleProfileClickFromSearch = (user) => {
         this.setState({ page: 'profile', user: user });
-        console.log(user);
+        // console.log(user);
         // renderProfile(user);
     };
     //////////////////////////////////
@@ -111,7 +111,10 @@ class App extends Component {
                                         this.state.user
                                             ? this.state.user
                                             : accounts[6]
-                                    }></HomeView>
+                                    }
+                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
+                                        this
+                                    )}></HomeView>
                             );
                         } else if (page === 'search') {
                             return (
