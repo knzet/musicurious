@@ -30,10 +30,11 @@
 .DisplayName {
     /* flex: 1; */
     margin: 1rem;
+    /* color: #403f4c; */
 }
 
-.DisplayName:hover{
-    color: blue;
+.DisplayName:hover {
+    color: #3185fc;
     text-decoration: underline blue;
     font-weight: bold;
 }
@@ -52,25 +53,33 @@
 }
 
 .ProfileButton {
-    background-color: aquamarine;
+    background-color: #3185fc;
+    color: #f9dc5c;
     margin: 1rem;
     position: relative;
     height: 2rem;
     width: 5rem;
     border-radius: 10px;
 }
+.ProfileButton:hover {
+    background-color: #6199e7;
+}
 
-#ProfileButton ul{
+#ProfileButton ul {
     display: flex;
     list-style: none;
 }
 
 .ProfileOptions {
-    background-color: aquamarine;
+    background-color: #3185fc;
+    color: #f9dc5c;
     margin: 1rem;
     height: 2rem;
     width: 3rem;
     border-radius: 10px;
+}
+.ProfileOptions:hover {
+    background-color: #6199e7;
 }
 
 .ProfileTabs {
