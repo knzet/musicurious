@@ -28,7 +28,7 @@ class ProfileView extends React.Component {
      */
     renderTinyProfile(profile){
         return (
-          <div className={'TinyProfile'}>
+          <div className={'TinyProfile'} key={profile.userName}>
               <img src={userimg}
                    title={profile.userName}
                    className={'TinyProfileImage'}
