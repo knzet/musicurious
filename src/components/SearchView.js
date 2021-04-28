@@ -23,6 +23,10 @@ class SearchView extends React.Component {
                         ) ? (
                             <ProfileView
                                 renderType="search"
+                                // Make sure that this function has the same name as the one in
+                                //    renderTinyProfile in ProfileView
+                                // If the comment of the other function has this code: 113, that is
+                                //    the function.
                                 onProfileClick={this.props.handleProfileClick.bind(
                                     this
                                 )}

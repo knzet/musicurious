@@ -33,7 +33,7 @@ class App extends Component {
     state = {
         page: 'profile',
         // user: { userName: 'testUser' },
-        user: accounts[5],
+        user: accounts[3],
         follow: '',
         query: '',
     };
@@ -104,7 +104,9 @@ class App extends Component {
                                     handleContactClick={this.handleContactClick.bind(
                                         this
                                     )}
-                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
+                                    // Make sure that this function name is the same as the one in SearchView
+                                    // If the comment of the other function has this code: 113. that is the function
+                                    onProfileClick={this.handleProfileClickFromSearch.bind(
                                         this
                                     )}
                                 ></ProfileView>

@@ -33,7 +33,9 @@ class ProfileView extends React.Component {
                    title={profile.userName}
                    className={'TinyProfileImage'}
                    onClick={()=>{
-                       this.props.handleProfileClick(profile)
+                       // Make sure that this function name is the same as the one in SearchView
+                       // If the comment of the other function has this code: 113. that is the function
+                       this.props.onProfileClick(profile)
                    }}/>
           </div>
         );
@@ -75,13 +77,14 @@ class ProfileView extends React.Component {
 
                         <div className={'ProfileItems'}>
                             {/* {console.log(this.props.user)} */}
-                            Goals: {this.props.user.goals}
+                            Goals: {this.state.user.goals}
                         </div>
 
                         {this.state.user.isUser ? (
                             <div className={'ProfileItems'}>
                                 Groups:
-                                {this.state.user.groups.map((profile)=>(
+                                {(this.state.user.groups.length === 0) ? ' None' :
+                                    this.state.user.groups.map((profile)=>(
                                     this.renderTinyProfile(profile)
                                 ))}
                             </div>
@@ -120,13 +123,13 @@ class ProfileView extends React.Component {
                             <Tab>Bio</Tab>
                             <Tab>Demos</Tab>
                             <Tab>Followers</Tab>
-                            {this.props.user.isUser ? null : <Tab>Members</Tab>}
+                            {this.state.user.isUser ? null : <Tab>Members</Tab>}
                         </TabList>
 
                         <TabPanel>
                             <div className={'BioContainer'}>
                                 <div className={'Bio'}>
-                                    {this.props.user.bio}
+                                    {this.state.user.bio}
                                 </div>
                             </div>
                         </TabPanel>
