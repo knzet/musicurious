@@ -31,8 +31,9 @@ class App extends Component {
         this.handleSearch = this.handleSearch.bind(this);
     }
     state = {
-        page: 'home',
+        page: 'profile',
         // user: { userName: 'testUser' },
+        user: accounts[5],
         follow: '',
         query: '',
     };
@@ -70,7 +71,7 @@ class App extends Component {
 
     handleProfileClickFromSearch = (user) => {
         this.setState({ page: 'profile', user: user });
-        // console.log(user);
+        console.log(user);
         // renderProfile(user);
     };
     //////////////////////////////////
@@ -101,6 +102,9 @@ class App extends Component {
                                         this
                                     )}
                                     handleContactClick={this.handleContactClick.bind(
+                                        this
+                                    )}
+                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
                                         this
                                     )}
                                 ></ProfileView>

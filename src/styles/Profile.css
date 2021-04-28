@@ -50,6 +50,7 @@
     text-align: left;
     margin: 1rem;
     height: auto;
+    display: flex;
 }
 
 .ProfileButton {
@@ -84,8 +85,7 @@
 
 .ProfileTabs {
     text-align: left;
-    padding-left: 1rem;
-    background-color: cadetblue;
+    background-color: #6199e7;
     width: 90%;
 }
 
@@ -106,4 +106,18 @@
 }
 
 .SpotifyPlayer {
+}
+
+.TinyProfile {
+    width: 3rem;
+    margin: 0 1rem 1rem;
+}
+
+.TinyProfileImage {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.TinyProfileImage:hover {
+    opacity: 0.7;
 }

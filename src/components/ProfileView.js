@@ -19,6 +19,26 @@ class ProfileView extends React.Component {
     view = 'list'; // or 'coverart'
     theme = 'black'; // or 'white'
     // end spotify
+
+    /*
+    This is responsible for rendering a tiny profile icon
+    that links to the actual profile
+    Parameter:
+        profile - an Account instance
+     */
+    renderTinyProfile(profile){
+        return (
+          <div className={'TinyProfile'}>
+              <img src={userimg}
+                   title={profile.userName}
+                   className={'TinyProfileImage'}
+                   onClick={()=>{
+                       this.props.handleProfileClick(profile)
+                   }}/>
+          </div>
+        );
+    }
+
     render() {
         return (
             <div className="ProfileContainer">
@@ -61,13 +81,9 @@ class ProfileView extends React.Component {
                         {this.state.user.isUser ? (
                             <div className={'ProfileItems'}>
                                 Groups:
-                                <ul>
-                                    {this.state.user.groups.map((group) => (
-                                        <li key={group.toString()}>
-                                            {group.name}
-                                        </li>
-                                    ))}
-                                </ul>
+                                {this.state.user.groups.map((profile)=>(
+                                    this.renderTinyProfile(profile)
+                                ))}
                             </div>
                         ) : null}
 
