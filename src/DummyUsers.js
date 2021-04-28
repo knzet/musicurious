@@ -54,12 +54,15 @@ const u3 = new Account({
     location: 'Top of the world',
     skills: 'None',
 });
+
 const u4 = new Account({
     isUser: false,
     userName: 'Dummy Group',
     bio: 'Dummy Group',
     collaborators: [u3],
 });
+u3.collaborators.push(u4);
+
 // Users that has friends and groups
 const u5 = new Account({
     isUser: true,
@@ -69,6 +72,10 @@ const u5 = new Account({
     skills: 'piano',
     goals: 'Being a part of the best group',
 });
+u0.friends.push(u5);
+u1.friends.push(u5);
+u3.members.push(u5);
+u4.members.push(u5);
 
 // Users with a lot of posts
 const u6 = new Account({
@@ -79,5 +86,12 @@ const u6 = new Account({
 });
 u6.posts.push(new Post({msg:'hahahahaha', user:u6}),
     new Post({msg:'second message', user:u6}));
+u0.friends.push(u6);
+u1.friends.push(u6);
+u2.friends.push(u6);
+u3.members.push(u6);
+u4.members.push(u6);
+u5.friends.push(u6);
+
 accounts.push(u0, u1, u2, u3, u4, u5, u6);
 export default accounts;

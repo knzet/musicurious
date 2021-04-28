@@ -31,7 +31,7 @@ class App extends Component {
         this.handleSearch = this.handleSearch.bind(this);
     }
     state = {
-        page: 'profile',
+        page: 'home',
         // user: { userName: 'testUser' },
         user: accounts[3],
         follow: '',
@@ -71,7 +71,7 @@ class App extends Component {
 
     handleProfileClickFromSearch = (user) => {
         this.setState({ page: 'profile', user: user });
-        console.log(user);
+        // console.log(user);
         // renderProfile(user);
     };
     //////////////////////////////////
