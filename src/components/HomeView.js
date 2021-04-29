@@ -102,9 +102,7 @@ export default class HomeView extends React.Component{
         return(
             <div className={'Post'} key={'Post'+index}>
             <div className={'DisplayName'}
-                 onClick={() => {
-                     this.props.handleProfileClick(this.state.user)
-                 }}
+                 onClick={() => this.props.handleProfileClick(post.user)}
             >
                 {post.user.userName}
             </div>
