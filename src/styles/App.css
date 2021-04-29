@@ -3,14 +3,17 @@ body,
 #root,
 .App {
     height: 100%;
+    background-color: #403F4C;
+    color: #F9DC5C;
 }
 
 .App {
     text-align: center;
     align-content: flex-start;
-    background-color: #4e4e4e;
+    background-color: #403F4C;
     display: flex;
     flex-direction: column;
+    font-family: Comfortaa, serif;
 }
 
 .Content {

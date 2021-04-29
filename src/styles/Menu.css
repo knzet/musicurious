@@ -18,7 +18,7 @@ div.Menu {
     text-align: left;
     color: #f9dc5c;
     /* height: 100%; */
-    background-color: #3185fc;
+    background-color: #403F4C;
     /* margin:1rem; */
     padding: 0.4rem;
     margin: 0.5rem 0.5rem 0rem 0rem;
@@ -26,6 +26,8 @@ div.Menu {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    border-right: 0.5rem solid #3185FC;
+
 }
 .active {
     background-color: #e84855;

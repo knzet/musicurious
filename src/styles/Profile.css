@@ -4,15 +4,16 @@
     align-items: flex-start;
     flex: 1;
     /* flex-grow: 10000; */
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .Profile {
     display: flex;
     width: 90%;
-    background-color: #c4c4c4;
+    background-color: rgba(129, 126, 168, 0.49);
     height: auto;
     margin-bottom: 1rem;
+    border-radius: 1rem;
 }
 
 .ProfileImageContainer {
@@ -25,6 +26,7 @@
     margin: 1rem;
     /* min-height: 2rem; */
     background-color: #61dafb;
+    border-radius: 1rem;
 }
 
 .DisplayName {

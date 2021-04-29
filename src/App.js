@@ -29,7 +29,7 @@ class App extends Component {
         this.handleSearch = this.handleSearch.bind(this);
     }
     state = {
-        page: 'profile',
+        page: 'home',
         // user: { userName: 'testUser' },
         user: accounts[5],
         follow: '',

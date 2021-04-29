@@ -46,11 +46,11 @@ export default class HomeView extends React.Component{
             <div className={'NewPost'}>
               <form onSubmit={this.handleSubmitInMakePost}>
                   <label>
-                      New Post:
-                      <br />
+                      <div className={'P'}>New Post:</div>
                       <textarea value={this.state.newText}
                                 placeholder={'What you are thinking ...'}
                                 onChange={this.handleChangeInMakePost}
+                                className={'textA'}
                                 required/>
                       <br />
                   </label>
