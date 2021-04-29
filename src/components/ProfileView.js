@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import SpotifyPlayer from 'react-spotify-player';
-import userimg from '../userimg.jpeg';
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 class ProfileView extends React.Component {
@@ -29,7 +28,7 @@ class ProfileView extends React.Component {
     renderTinyProfile(profile){
         return (
           <div className={'TinyProfile'} key={profile.userName}>
-              <img src={userimg}
+              <img src={profile.avatar}
                    title={profile.userName}
                    className={'TinyProfileImage'}
                    onClick={()=> {
@@ -42,13 +41,29 @@ class ProfileView extends React.Component {
         );
     }
 
+    /*
+    This renders a list of little icons for each account in the provided list
+    Parameter:
+        list   a list of Account instances
+     */
+    renderListOfTinyProfiles(list){
+        return (
+            <div className={'ProfileList'}>
+                {(list.length === 0) ? ' None' :
+                    list.map((profile)=>(
+                        this.renderTinyProfile(profile)
+                    ))}
+            </div>
+        );
+    }
+
     render() {
         return (
             <div className="ProfileContainer">
                 <div className={'Profile'}>
                     <div className="ProfileImageContainer">
                         <img
-                            src={userimg}
+                            src={this.state.user.avatar}
                             className="ProfileImage"
                             width="150px"
                             height="150px"
@@ -79,15 +94,14 @@ class ProfileView extends React.Component {
                             Goals: {this.state.user.goals}
                         </div>
 
-                        {this.state.user.isUser ? (
-                            <div className={'ProfileItems'}>
-                                Groups:
-                                {(this.state.user.groups.length === 0) ? ' None' :
-                                    this.state.user.groups.map((profile)=>(
-                                    this.renderTinyProfile(profile)
-                                ))}
-                            </div>
-                        ) : null}
+                        <div className={'ProfileItems'}>
+                            {this.state.user.isUser ? 'Groups: ' : 'Members: '}
+                            {
+                                this.state.user.isUser ?
+                                    this.renderListOfTinyProfiles(this.state.user.groups)
+                                    : this.renderListOfTinyProfiles(this.state.user.members)
+                            }
+                        </div>
 
                         <div className={'ProfileItems'}>
                             Spotify/bandcamp link:
@@ -97,7 +111,7 @@ class ProfileView extends React.Component {
                             className={'ProfileButton'}
                             onClick={() =>
                                 this.props.handleFollowClick(
-                                    this.state.user.name
+                                    this.state.user.userName
                                 )
                             }
                         >
@@ -107,7 +121,7 @@ class ProfileView extends React.Component {
                             className={'ProfileButton'}
                             onClick={() =>
                                 this.props.handleContactClick(
-                                    this.state.user.name
+                                    this.state.user.userName
                                 )
                             }
                         >
@@ -121,8 +135,11 @@ class ProfileView extends React.Component {
                         <TabList>
                             <Tab>Bio</Tab>
                             <Tab>Demos</Tab>
-                            <Tab>Followers</Tab>
-                            {this.state.user.isUser ? null : <Tab>Members</Tab>}
+                            {
+                                this.state.user.isUser ?
+                                    <Tab>Friends</Tab>
+                                    : <Tab>Collaborators</Tab>
+                            }
                         </TabList>
 
                         <TabPanel>
@@ -141,11 +158,12 @@ class ProfileView extends React.Component {
                             />
                         </TabPanel>
                         <TabPanel>
-                            <div>placeholder tabpanel to silence warnings</div>
+                            {
+                                this.state.user.isUser ?
+                                    this.renderListOfTinyProfiles(this.state.user.friends)
+                                    : this.renderListOfTinyProfiles(this.state.user.collaborators)
+                            }
                         </TabPanel>
-                        {this.state.user.isUser ? null : (
-                            <TabPanel>group members tab</TabPanel>
-                        )}
                     </Tabs>
                 )}
                 {/* search render skips the tabs */}
