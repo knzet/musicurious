@@ -1,17 +1,22 @@
 .TopContainer {
     display: inline-grid;
     /*grid-template-columns: 17rem 50rem 40rem;*/
-    grid-template-columns: 30% 50% 20%;
+    grid-template-columns: 23% 50% 27%;
     /*padding: 1rem 0.5rem;*/
     /*margin: 0rem 2rem 2rem;*/
     height: 3rem;
 }
 
 .logo {
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     font-size: xx-large;
-    background-color: #3185fc;
-    color: #f9dc5c;
+    font-style: normal;
+    font-weight: normal;
+    align-items: center;
+    text-align: center;
+    color: #F9DC5C;
+    background-color: #E84855;
+    border-bottom-right-radius: 1rem;
 }
 
 .SearchBar {
@@ -19,15 +24,20 @@
 
 .AlertImg {
     /*margin-left: 20rem;*/
-    width: 20%;
-    height: 60%;
+    width: 30%;
+    height: inherit;
     /*background-color: #c4c4c4;*/
 }
 .bell {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: inherit;
 }
 
 .bell:hover {
     background-color: mediumpurple;
+}
+
+.Utility {
+    width: inherit;
+    height: inherit;
 }

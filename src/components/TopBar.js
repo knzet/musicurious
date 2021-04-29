@@ -25,9 +25,11 @@ class TopBar extends React.Component {
                             // if not working, remember that it only filters by skills. searching empty string returns all profiles
                         />
                     </div>
-                    <div className={'AlertImg'}>
-                        {' '}
-                        <img src={bellimg} className={'bell'} alt={'Bell'}></img>{' '}
+                    <div className={'Utility'}>
+                        <div className={'AlertImg'}>
+                            {' '}
+                            <img src={bellimg} className={'bell'} alt={'Bell'}></img>{' '}
+                        </div>
                     </div>
                 </div>
             </>
