@@ -12,7 +12,7 @@ import SearchView from './components/SearchView';
 import HomeView from './components/HomeView';
 import createBrowserHistory from 'history/createBrowserHistory';
 import React, { Component } from 'react';
-import Account from './backend/Account.js';
+//import Account from './backend/Account.js';
 import TopBar from './components/TopBar';
 
 import accounts from './DummyUsers';
@@ -25,15 +25,13 @@ class App extends Component {
         this.navClick = this.navClick.bind(this); // need to bind click handler to the right context, in case the component gets re-rendered
         this.handleFollowClick = this.handleFollowClick.bind(this);
         this.handleContactClick = this.handleContactClick.bind(this);
-        this.handleProfileClickFromSearch = this.handleProfileClickFromSearch.bind(
-            this
-        );
+        this.handleProfileClick = this.handleProfileClick.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
     state = {
-        page: 'home',
+        page: 'profile',
         // user: { userName: 'testUser' },
-        user: accounts[3],
+        user: accounts[5],
         follow: '',
         query: '',
     };
@@ -56,7 +54,7 @@ class App extends Component {
     };
 
     navClick = (key, item, domEvent, keyPath) => {
-        console.log({ key, item, domEvent, keyPath });
+        //console.log({ key, item, domEvent, keyPath });
         var page;
         if (key.key === 'item_2') {
             page = 'profile';
@@ -69,9 +67,8 @@ class App extends Component {
         // window.location.pathname !== '/' + page && history.push('/' + page);
     };
 
-    handleProfileClickFromSearch = (user) => {
+    handleProfileClick = (user) => {
         this.setState({ page: 'profile', user: user });
-        // console.log(user);
         // renderProfile(user);
     };
     //////////////////////////////////
@@ -91,53 +88,35 @@ class App extends Component {
                         if (page === 'profile') {
                             return (
                                 <ProfileView
-                                    user={
+                                    user={ this.state.user }
                                         // TODO: use dummy users for all the profileviews. if some dummy users have different skills, use the search to filter by skill
-                                        this.state.user
-                                            ? this.state.user
-                                            : accounts[0]
-                                    }
+                                        //this.state.user
+                                        //    ? this.state.user
+                                        //    : accounts[0]
+                                    //}
                                     className="Profile"
-                                    handleFollowClick={this.handleFollowClick.bind(
-                                        this
-                                    )}
-                                    handleContactClick={this.handleContactClick.bind(
-                                        this
-                                    )}
+                                    handleFollowClick={this.handleFollowClick.bind(this)}
+                                    handleContactClick={this.handleContactClick.bind(this)}
                                     // Make sure that this function name is the same as the one in SearchView
                                     // If the comment of the other function has this code: 113. that is the function
-                                    onProfileClick={this.handleProfileClickFromSearch.bind(
-                                        this
-                                    )}
+                                    onProfileClick={this.handleProfileClick.bind(this)}
                                 ></ProfileView>
                             );
                         } else if (page === 'home') {
                             //<div>test div</div>;
                             return (
                                 <HomeView
-                                    user={
-                                        this.state.user
-                                            ? this.state.user
-                                            : accounts[6]
-                                    }
-                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
-                                        this
-                                    )}
+                                    user={ this.state.user }
+                                    handleProfileClick={this.handleProfileClick.bind(this)}
                                 ></HomeView>
                             );
                         } else if (page === 'search') {
                             return (
                                 <SearchView
                                     query={this.state.query}
-                                    handleProfileClick={this.handleProfileClickFromSearch.bind(
-                                        this
-                                    )}
-                                    handleFollowClick={this.handleFollowClick.bind(
-                                        this
-                                    )}
-                                    handleContactClick={this.handleContactClick.bind(
-                                        this
-                                    )}
+                                    handleProfileClick={this.handleProfileClick.bind(this)}
+                                    handleFollowClick={this.handleFollowClick.bind(this)}
+                                    handleContactClick={this.handleContactClick.bind(this)}
                                 ></SearchView>
                             );
                         } else {
