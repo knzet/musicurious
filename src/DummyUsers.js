@@ -12,13 +12,15 @@ Author: Van Pham <vnp7514@rit.edu>
  */
 import Account from './backend/Account';
 import Post from './components/Post';
+import userimg from './userimg.jpeg';
 
 var accounts = []; // List of users and groups
 
 // Basic user
 const u0 = new Account({
     isUser: true,
-    userName: 'test Name',
+    userName: 'User 0',
+    avatar: userimg,
     contact: 'email@web.com',
     skills:
         'Drummer, Singer, Guitarist, Pianoist,' +
@@ -29,6 +31,7 @@ const u0 = new Account({
 const u1 = new Account({
     isUser: true,
     userName: 'David R',
+    avatar: userimg,
     contact: 'email2@web.ca',
     skills: 'Drummer, songwriting',
     goals: 'form a band, write songs',
@@ -38,6 +41,7 @@ const u1 = new Account({
 const u2 = new Account({
     isUser: true,
     userName: 'Adam N',
+    avatar: userimg,
     contact: 'email2@web.ca',
     skills: 'Bass, music theory',
     goals: 'jam and have fun',
@@ -47,8 +51,8 @@ const u2 = new Account({
 const u3 = new Account({
     isUser: false,
     userName: 'Group 1',
+    avatar: userimg,
     contact: 'group1rules@mail.fr',
-    avatar: './backend/logo512.png',
     bio: 'Best group 1 in the world',
     goals: 'Seeking music talents out there',
     location: 'Top of the world',
@@ -57,6 +61,7 @@ const u3 = new Account({
 
 const u4 = new Account({
     isUser: false,
+    avatar: userimg,
     userName: 'Dummy Group',
     bio: 'Dummy Group',
     collaborators: [u3],
@@ -67,9 +72,11 @@ u3.collaborators.push(u4);
 const u5 = new Account({
     isUser: true,
     userName: 'User4',
+    avatar: userimg,
     friends: [u0, u1],
     groups: [u3, u4],
     skills: 'piano',
+    location: 'Rochester',
     goals: 'Being a part of the best group',
 });
 u0.friends.push(u5);
@@ -80,9 +87,14 @@ u4.members.push(u5);
 // Users with a lot of posts
 const u6 = new Account({
     isUser: true,
+    avatar: userimg,
     userName: 'Talkative',
     posts: [],
     skills: 'None',
+    goals: 'To be the most talkative person in the world',
+    bio: 'I like to post things',
+    friends: [u0,u1,u2,u5],
+    groups: [u3,u4]
 });
 u6.posts.push(new Post({msg:'hahahahaha', user:u6}),
     new Post({msg:'second message', user:u6}));
