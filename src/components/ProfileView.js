@@ -32,10 +32,11 @@ class ProfileView extends React.Component {
               <img src={userimg}
                    title={profile.userName}
                    className={'TinyProfileImage'}
-                   onClick={()=>{
+                   onClick={()=> {
                        // Make sure that this function name is the same as the one in SearchView
                        // If the comment of the other function has this code: 113. that is the function
-                       this.props.onProfileClick(profile)
+                       this.props.onProfileClick(profile);
+                       this.setState({user: profile});
                    }}/>
           </div>
         );
@@ -60,9 +61,7 @@ class ProfileView extends React.Component {
                                 // don't need to click name to go to profile when we are viewing the profile, only on search page
                                 this.props.renderType === 'search'
                                     ? () => {
-                                          this.props.onProfileClick(
-                                              this.state.user
-                                          );
+                                          this.props.onProfileClick(this.state.user);
                                       }
                                     : null
                             }
